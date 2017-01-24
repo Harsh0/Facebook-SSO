@@ -8,8 +8,7 @@ var express           =     require('express')
   , mongoose          =     require('mongoose')
   , app               =     express();
 
-
-//Connect to Database [Harsh:123]ds119788.mlab.com:19788
+//Connect to Database
 if(config.username&&config.password){
     var conString = 'mongodb://'+config.username+':'+config.password+'@'+config.host+':'+config.port+'/'+config.database;
 }else{
