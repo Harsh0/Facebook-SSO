@@ -25,7 +25,9 @@ db.once('open',function(){
 var Schema = mongoose.Schema;
 var userSchema = new Schema({
   _id:String,
-  username:String
+  username:String,
+    accessToken:String,
+    refreshToken:String
 });
 var User = mongoose.model('userdetails',userSchema);
 
@@ -59,7 +61,7 @@ passport.use(new FacebookStrategy({
           }else{
                 console.log("There is no such user, adding now");
               //add user in database
-              var user = {_id:profile.id,'username':profile.displayName};
+              var user = {_id:profile.id,'username':profile.displayName,'accessToken':accessToken,'refreshToken':refreshToken};
               user = new User(user);
               user.save(function(error){
                   if(error) throw error;
